@@ -21,23 +21,57 @@
         .whatsapp-container {
             margin: 20px auto;
             display: flex;
-            justify-content: center;
+            flex-direction: column;
             align-items: center;
-            gap: 10px;
+            text-align: center;
+            position: relative;
         }
         .whatsapp-text {
+            font-size: 22px;
+            font-weight: bold;
+            margin-bottom: 10px;
+        }
+        .whatsapp-button {
+            padding: 15px 30px;
+            background-color: #25D366;
+            border-radius: 50px;
+            color: white;
             font-size: 20px;
+            font-weight: bold;
+            text-decoration: none;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px;
+            box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+            transition: transform 0.3s ease-in-out;
+        }
+        .whatsapp-button:hover {
+            transform: scale(1.1);
         }
         .whatsapp-button img {
-            width: 50px;
-            height: 50px;
-            cursor: pointer;
+            width: 40px;
+            height: 40px;
+        }
+        .arrow-container {
+            display: flex;
+            justify-content: space-between;
+            width: 100%;
+            max-width: 400px;
+            margin: 0 auto;
+            align-items: center;
+        }
+        .arrow {
+            font-size: 40px;
+            font-weight: bold;
+            color: red;
         }
         .reviews-container {
-            width: 80%;
-            margin: 30px auto;
+            width: 95%;
+            margin: 20px auto;
+            display: flex;
+            justify-content: center;
             overflow: hidden;
-            position: relative;
         }
         .reviews {
             display: flex;
@@ -45,13 +79,14 @@
         }
         .review {
             background: white;
-            margin: 10px;
             padding: 15px;
             width: 48%;
+            margin: 5px;
             box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
             border-radius: 8px;
             display: flex;
             align-items: center;
+            text-align: left;
         }
         .review img {
             width: 50px;
@@ -121,13 +156,16 @@
     <!-- WhatsApp যোগাযোগ সিস্টেম -->
     <div class="whatsapp-container">
         <div class="whatsapp-text">আমাদের WhatsApp এ যোগাযোগ করুন</div>
-        <a class="whatsapp-button" href="https://wa.me/qr/7NVJYZ5U7L5OD1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
+        <div class="arrow-container">
+            <div class="arrow">⬅️</div>
+            <a class="whatsapp-button" href="https://wa.me/message/6LLW5RGNEE5BD1" target="_blank">
+                <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp"> WhatsApp
+            </a>
+            <div class="arrow">➡️</div>
+        </div>
     </div>
 
     <div class="reviews-container">
-        <h2>কাস্টমার রিভিউ</h2>
         <div class="reviews" id="reviewList"></div>
     </div>
 
@@ -144,10 +182,11 @@
 
     <script>
         const reviews = [
-            { name: "রফিকুল ইসলাম", image: "https://randomuser.me/api/portraits/men/1.jpg", text: "খুব ভালো সার্ভিস! আমি সন্তুষ্ট।", stars: "★★★★★" },
-            { name: "সাইফুল ইসলাম", image: "https://randomuser.me/api/portraits/men/2.jpg", text: "রেট ভালো এবং ফাস্ট ট্রানজেকশন।", stars: "★★★★★" },
-            { name: "মোহাম্মদ হাসান", image: "https://randomuser.me/api/portraits/men/3.jpg", text: "আমি দ্রুত ডলার পেয়েছি।", stars: "★★★★★" },
-            { name: "শরিফ খান", image: "https://randomuser.me/api/portraits/men/4.jpg", text: "২৪/৭ সাপোর্ট চমৎকার!", stars: "★★★★★" }
+            { name: "আরিফুল ইসলাম", image: "https://randomuser.me/api/portraits/men/30.jpg", text: "খুব ভালো সার্ভিস! আমি সন্তুষ্ট।", stars: "★★★★★" },
+            { name: "তানভীর আহমেদ", image: "https://randomuser.me/api/portraits/men/31.jpg", text: "রেট ভালো এবং ফাস্ট ট্রানজেকশন।", stars: "★★★★★" },
+            { name: "সজীব রহমান", image: "https://randomuser.me/api/portraits/men/32.jpg", text: "আমি দ্রুত ডলার পেয়েছি।", stars: "★★★★★" },
+            { name: "শরিফ খান", image: "https://randomuser.me/api/portraits/men/33.jpg", text: "২৪/৭ সাপোর্ট চমৎকার!", stars: "★★★★★" },
+            { name: "রিফাত হোসেন", image: "https://randomuser.me/api/portraits/men/34.jpg", text: "অনেক ভালো সার্ভিস!", stars: "★★★★★" }
         ];
 
         let index = 0;
@@ -173,27 +212,8 @@
             index = (index + 2) % reviews.length;
         }
 
-        function submitReview() {
-            alert("ধন্যবাদ! আপনার রিভিউ জমা হয়েছে, কিন্তু এটি প্রকাশিত হবে না।");
-        }
-
         setInterval(showReviews, 5000);
         showReviews();
-
-        const marqueeMessages = [
-            "Redotpay 1 USDT 115.50 Taka",
-            "Bybit 1 USD 117 Taka",
-            "Payoneer 1 USDT 118 Taka",
-            "Binance 1 USD 120.50 Taka"
-        ];
-        let marqueeIndex = 0;
-
-        function updateMarquee() {
-            document.getElementById("marqueeText").textContent = marqueeMessages[marqueeIndex];
-            marqueeIndex = (marqueeIndex + 1) % marqueeMessages.length;
-        }
-
-        setInterval(updateMarquee, 5000);
     </script>
 
 </body>

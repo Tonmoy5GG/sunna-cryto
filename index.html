@@ -1,10 +1,10 @@
 
-<!DOCTYPE html>
+<<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunna Crypto Exchange</title>
+    <title>Sunnah Crypto Supplier</title>
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -19,61 +19,74 @@
             color: white;
             font-size: 24px;
         }
-        .whatsapp-button {
-            display: inline-block;
+        .whatsapp-container {
             margin: 30px auto;
-            padding: 15px 25px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .whatsapp-text {
             font-size: 20px;
+            margin-right: 10px;
+        }
+        .whatsapp-button img {
+            width: 50px;
+            height: 50px;
+            cursor: pointer;
+        }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            background: black;
             color: white;
-            background-color: #25D366;
-            text-decoration: none;
-            border-radius: 5px;
-        }
-        .whatsapp-button:hover {
-            background-color: #1EBE57;
-        }
-        .reviews {
-            margin-top: 40px;
-            text-align: center;
-        }
-        .review {
-            background: white;
-            margin: 10px auto;
-            padding: 15px;
-            width: 80%;
-            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
-        }
-        .stars {
-            color: gold;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
             font-size: 18px;
+        }
+        .marquee-text {
+            white-space: nowrap;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
         }
     </style>
 </head>
 <body>
 
     <div class="header">
-        Sunna Crypto Exchange এ আপনাকে স্বাগতম
+        Sunnah Crypto Supplier এ আপনাকে স্বাগতম
     </div>
 
-    <a class="whatsapp-button" href="https://wa.me/qr/7NVJYZ5U7L5OD1" target="_blank">
-        WhatsApp এ আমাদের সাথে যুক্ত হন
-    </a>
-
-    <div class="reviews">
-        <h2>কাস্টমার রিভিউ</h2>
-        <div class="review">
-            <p>"আমি খুব দ্রুত ডলার পেয়েছি। সার্ভিস খুব ভালো।"</p>
-            <div class="stars">★★★★★</div>
-        </div>
-        <div class="review">
-            <p>"অন্য যেকোনো এক্সচেঞ্জ থেকে ভালো রেট দিয়েছে।"</p>
-            <div class="stars">★★★★★</div>
-        </div>
-        <div class="review">
-            <p>"২৪/৭ সাপোর্ট, খুবই চমৎকার অভিজ্ঞতা।"</p>
-            <div class="stars">★★★★★</div>
-        </div>
+    <div class="whatsapp-container">
+        <div class="whatsapp-text">আমাদের WhatsApp এ যোগাযোগ করুন</div>
+        <a class="whatsapp-button" href="https://wa.me/qr/7NVJYZ5U7L5OD1" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
     </div>
+
+    <div class="marquee-container">
+        <div class="marquee-text" id="marqueeText">Redotpay 1 USDT 115.50 Taka</div>
+    </div>
+
+    <script>
+        const marqueeMessages = [
+            "Redotpay 1 USDT 115.50 Taka",
+            "Bybit 1 USD 117 Taka",
+            "Payoneer 1 USDT 118 Taka",
+            "Binance 1 USD 120.50 Taka"
+        ];
+        let marqueeIndex = 0;
+
+        function updateMarquee() {
+            document.getElementById("marqueeText").textContent = marqueeMessages[marqueeIndex];
+            marqueeIndex = (marqueeIndex + 1) % marqueeMessages.length;
+        }
+
+        setInterval(updateMarquee, 5000);
+    </script>
 
 </body>
 </html>

@@ -58,34 +58,148 @@
 
     <div class="header">
         Sunnah Crypto Supplier এ আপনাকে স্বাগতম
+   <!DOCTYPE html>
+<html lang="bn">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sunnah Crypto Supplier</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 0;
+            background-color: #f4f4f4;
+        }
+        .header {
+            background-color: #ff9800;
+            padding: 20px;
+            color: white;
+            font-size: 24px;
+        }
+        .reviews-container {
+            width: 80%;
+            margin: 30px auto;
+            overflow: hidden;
+            position: relative;
+        }
+        .reviews {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
+        }
+        .review {
+            background: white;
+            margin: 10px;
+            padding: 15px;
+            width: 48%;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+        }
+        .review img {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            margin-right: 10px;
+        }
+        .review-content {
+            text-align: left;
+        }
+        .stars {
+            color: gold;
+            font-size: 18px;
+        }
+        .review-box {
+            background: white;
+            width: 50%;
+            margin: 20px auto;
+            padding: 20px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+            text-align: left;
+        }
+        .review-box input, .review-box textarea {
+            width: 100%;
+            padding: 10px;
+            margin: 10px 0;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .review-box button {
+            padding: 10px 15px;
+            background-color: #ff9800;
+            color: white;
+            border: none;
+            cursor: pointer;
+        }
+        .review-box button:hover {
+            background-color: #e68900;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="header">
+        Sunnah Crypto Supplier এ আপনাকে স্বাগতম
     </div>
 
-    <div class="whatsapp-container">
-        <div class="whatsapp-text">আমাদের WhatsApp এ যোগাযোগ করুন</div>
-        <a class="whatsapp-button" href="https://wa.me/qr/7NVJYZ5U7L5OD1" target="_blank">
-            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
-        </a>
+    <div class="reviews-container">
+        <h2>কাস্টমার রিভিউ</h2>
+        <div class="reviews" id="reviewList">
+            <!-- এখানে রিভিউগুলো ডায়নামিক্যালি যোগ হবে -->
+        </div>
     </div>
 
-    <div class="marquee-container">
-        <div class="marquee-text" id="marqueeText">Redotpay 1 USDT 115.50 Taka</div>
+    <div class="review-box">
+        <h3>আপনার মতামত জানান</h3>
+        <input type="text" placeholder="আপনার নাম লিখুন" id="reviewerName">
+        <textarea placeholder="আপনার মতামত লিখুন..." id="reviewerMessage"></textarea>
+        <button onclick="submitReview()">Submit</button>
     </div>
 
     <script>
-        const marqueeMessages = [
-            "Redotpay 1 USDT 115.50 Taka",
-            "Bybit 1 USD 117 Taka",
-            "Payoneer 1 USDT 118 Taka",
-            "Binance 1 USD 120.50 Taka"
+        const reviews = [
+            { name: "রফিকুল ইসলাম", image: "https://randomuser.me/api/portraits/men/1.jpg", text: "খুব ভালো সার্ভিস! আমি সন্তুষ্ট।", stars: "★★★★★" },
+            { name: "সাইফুল ইসলাম", image: "https://randomuser.me/api/portraits/men/2.jpg", text: "রেট ভালো এবং ফাস্ট ট্রানজেকশন।", stars: "★★★★★" },
+            { name: "মোহাম্মদ হাসান", image: "https://randomuser.me/api/portraits/men/3.jpg", text: "আমি দ্রুত ডলার পেয়েছি।", stars: "★★★★★" },
+            { name: "শরিফ খান", image: "https://randomuser.me/api/portraits/men/4.jpg", text: "২৪/৭ সাপোর্ট চমৎকার!", stars: "★★★★★" },
+            { name: "মাহমুদুল হাসান", image: "https://randomuser.me/api/portraits/men/5.jpg", text: "খুব সহজ লেনদেন ব্যবস্থা।", stars: "★★★★★" },
+            { name: "তানভীর রহমান", image: "https://randomuser.me/api/portraits/men/6.jpg", text: "আমি ১০ মিনিটে ডলার পেয়েছি!", stars: "★★★★★" }
         ];
-        let marqueeIndex = 0;
 
-        function updateMarquee() {
-            document.getElementById("marqueeText").textContent = marqueeMessages[marqueeIndex];
-            marqueeIndex = (marqueeIndex + 1) % marqueeMessages.length;
+        let index = 0;
+
+        function showReviews() {
+            const reviewList = document.getElementById("reviewList");
+            reviewList.innerHTML = "";
+
+            for (let i = 0; i < 2; i++) {
+                let review = reviews[(index + i) % reviews.length];
+                reviewList.innerHTML += `
+                    <div class="review">
+                        <img src="${review.image}" alt="${review.name}">
+                        <div class="review-content">
+                            <strong>${review.name}</strong>
+                            <p>${review.text}</p>
+                            <div class="stars">${review.stars}</div>
+                        </div>
+                    </div>
+                `;
+            }
+
+            index = (index + 2) % reviews.length;
         }
 
-        setInterval(updateMarquee, 5000);
+        function submitReview() {
+    alert("ধন্যবাদ! আপনার রিভিউ জমা হয়েছে।");
+}
+
+        }
+
+        setInterval(showReviews, 5000);
+        showReviews();
     </script>
 
 </body>

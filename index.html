@@ -1,5 +1,4 @@
-
-<<!DOCTYPE html>
+<!DOCTYPE html>
 <html lang="bn">
 <head>
     <meta charset="UTF-8">
@@ -20,63 +19,19 @@
             font-size: 24px;
         }
         .whatsapp-container {
-            margin: 30px auto;
+            margin: 20px auto;
             display: flex;
             justify-content: center;
             align-items: center;
+            gap: 10px;
         }
         .whatsapp-text {
             font-size: 20px;
-            margin-right: 10px;
         }
         .whatsapp-button img {
             width: 50px;
             height: 50px;
             cursor: pointer;
-        }
-        .marquee-container {
-            width: 100%;
-            overflow: hidden;
-            background: black;
-            color: white;
-            padding: 10px 0;
-            position: fixed;
-            bottom: 0;
-            font-size: 18px;
-        }
-        .marquee-text {
-            white-space: nowrap;
-            animation: marquee 10s linear infinite;
-        }
-        @keyframes marquee {
-            from { transform: translateX(100%); }
-            to { transform: translateX(-100%); }
-        }
-    </style>
-</head>
-<body>
-
-    <div class="header">
-        Sunnah Crypto Supplier এ আপনাকে স্বাগতম
-   <!DOCTYPE html>
-<html lang="bn">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Sunnah Crypto Supplier</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-            padding: 0;
-            background-color: #f4f4f4;
-        }
-        .header {
-            background-color: #ff9800;
-            padding: 20px;
-            color: white;
-            font-size: 24px;
         }
         .reviews-container {
             width: 80%;
@@ -137,6 +92,24 @@
         .review-box button:hover {
             background-color: #e68900;
         }
+        .marquee-container {
+            width: 100%;
+            overflow: hidden;
+            background: black;
+            color: white;
+            padding: 10px 0;
+            position: fixed;
+            bottom: 0;
+            font-size: 18px;
+        }
+        .marquee-text {
+            white-space: nowrap;
+            animation: marquee 10s linear infinite;
+        }
+        @keyframes marquee {
+            from { transform: translateX(100%); }
+            to { transform: translateX(-100%); }
+        }
     </style>
 </head>
 <body>
@@ -145,11 +118,17 @@
         Sunnah Crypto Supplier এ আপনাকে স্বাগতম
     </div>
 
+    <!-- WhatsApp যোগাযোগ সিস্টেম -->
+    <div class="whatsapp-container">
+        <div class="whatsapp-text">আমাদের WhatsApp এ যোগাযোগ করুন</div>
+        <a class="whatsapp-button" href="https://wa.me/qr/7NVJYZ5U7L5OD1" target="_blank">
+            <img src="https://upload.wikimedia.org/wikipedia/commons/6/6b/WhatsApp.svg" alt="WhatsApp">
+        </a>
+    </div>
+
     <div class="reviews-container">
         <h2>কাস্টমার রিভিউ</h2>
-        <div class="reviews" id="reviewList">
-            <!-- এখানে রিভিউগুলো ডায়নামিক্যালি যোগ হবে -->
-        </div>
+        <div class="reviews" id="reviewList"></div>
     </div>
 
     <div class="review-box">
@@ -159,14 +138,16 @@
         <button onclick="submitReview()">Submit</button>
     </div>
 
+    <div class="marquee-container">
+        <div class="marquee-text" id="marqueeText">Redotpay 1 USDT 115.50 Taka</div>
+    </div>
+
     <script>
         const reviews = [
             { name: "রফিকুল ইসলাম", image: "https://randomuser.me/api/portraits/men/1.jpg", text: "খুব ভালো সার্ভিস! আমি সন্তুষ্ট।", stars: "★★★★★" },
             { name: "সাইফুল ইসলাম", image: "https://randomuser.me/api/portraits/men/2.jpg", text: "রেট ভালো এবং ফাস্ট ট্রানজেকশন।", stars: "★★★★★" },
             { name: "মোহাম্মদ হাসান", image: "https://randomuser.me/api/portraits/men/3.jpg", text: "আমি দ্রুত ডলার পেয়েছি।", stars: "★★★★★" },
-            { name: "শরিফ খান", image: "https://randomuser.me/api/portraits/men/4.jpg", text: "২৪/৭ সাপোর্ট চমৎকার!", stars: "★★★★★" },
-            { name: "মাহমুদুল হাসান", image: "https://randomuser.me/api/portraits/men/5.jpg", text: "খুব সহজ লেনদেন ব্যবস্থা।", stars: "★★★★★" },
-            { name: "তানভীর রহমান", image: "https://randomuser.me/api/portraits/men/6.jpg", text: "আমি ১০ মিনিটে ডলার পেয়েছি!", stars: "★★★★★" }
+            { name: "শরিফ খান", image: "https://randomuser.me/api/portraits/men/4.jpg", text: "২৪/৭ সাপোর্ট চমৎকার!", stars: "★★★★★" }
         ];
 
         let index = 0;
@@ -193,13 +174,26 @@
         }
 
         function submitReview() {
-    alert("ধন্যবাদ! আপনার রিভিউ জমা হয়েছে।");
-}
-
+            alert("ধন্যবাদ! আপনার রিভিউ জমা হয়েছে, কিন্তু এটি প্রকাশিত হবে না।");
         }
 
         setInterval(showReviews, 5000);
         showReviews();
+
+        const marqueeMessages = [
+            "Redotpay 1 USDT 115.50 Taka",
+            "Bybit 1 USD 117 Taka",
+            "Payoneer 1 USDT 118 Taka",
+            "Binance 1 USD 120.50 Taka"
+        ];
+        let marqueeIndex = 0;
+
+        function updateMarquee() {
+            document.getElementById("marqueeText").textContent = marqueeMessages[marqueeIndex];
+            marqueeIndex = (marqueeIndex + 1) % marqueeMessages.length;
+        }
+
+        setInterval(updateMarquee, 5000);
     </script>
 
 </body>
